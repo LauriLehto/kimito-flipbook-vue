@@ -4,14 +4,9 @@
     :class="{ 'has-mouse': hasMouse }"
     @touchstart="hasMouse = false"
   >
-    <Ribbon
-      text="Fork me on GitHub"
-      url="https://github.com/ts1/flipbook-vue"
-    />
     <Flipbook
       class="flipbook"
       :pages="pages"
-      :pagesHiRes="pagesHiRes"
       v-slot="flipbook"
       ref="flipbook"
       @flip-left-start="onFlipLeftStart"
@@ -45,16 +40,11 @@
         />
       </div>
     </Flipbook>
-    <p class="credit">
-      Photos from
-      <a href="https://unsplash.com/" target="_blank">Unsplash</a>.
-    </p>
   </div>
 </template>
 
 <script lang="coffee">
 import 'vue-material-design-icons/styles.css'
-import Ribbon from 'vue-ribbon'
 import LeftIcon from 'vue-material-design-icons/ChevronLeftCircle'
 import RightIcon from 'vue-material-design-icons/ChevronRightCircle'
 import PlusIcon from 'vue-material-design-icons/PlusCircle'
@@ -63,10 +53,9 @@ import Flipbook from './Flipbook'
 
 export default
   name: 'app'
-  components: { Flipbook, LeftIcon, RightIcon, PlusIcon, MinusIcon, Ribbon }
+  components: { Flipbook, LeftIcon, RightIcon, PlusIcon, MinusIcon }
   data: ->
     pages: [],
-    pagesHiRes: [],
     hasMouse: true
   methods:
     onFlipLeftStart: (page) -> console.log 'flip-left-start', page
@@ -84,21 +73,12 @@ export default
     setTimeout (=>
       @pages = [
         null
-        'images/1.jpg'
-        'images/2.jpg'
-        'images/3.jpg'
-        'images/4.jpg'
-        'images/5.jpg'
-        'images/6.jpg'
-      ]
-      @pagesHiRes = [
-        null
-        'images-large/1.jpg'
-        'images-large/2.jpg'
-        'images-large/3.jpg'
-        'images-large/4.jpg'
-        'images-large/5.jpg'
-        'images-large/6.jpg'
+        'images/01.jpg'
+        'images/02.jpg'
+        'images/03.jpg'
+        'images/04.jpg'
+        'images/05.jpg'
+        'images/06.jpg'
       ]
     ), 1
 </script>
